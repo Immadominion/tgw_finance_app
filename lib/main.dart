@@ -6,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tgw_finance_app/firebase_options.dart';
 import 'package:flutter/services.dart';
-import 'dart:async';
+//import 'dart:async';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

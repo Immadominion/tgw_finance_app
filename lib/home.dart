@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tgw_finance_app/tgw_calculator/calculator.dart';
+//import 'package:tgw_finance_app/tgw_calculator/calculator.dart';
 import 'package:tgw_finance_app/tgw_calculator/maincalc.dart';
 import 'package:tgw_finance_app/tgw_converter/tgw_convert.dart';
 import 'auth.dart';
