@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "823688109763",
+    "firebase_url": "https://tgwfinancesapp-default-rtdb.firebaseio.com",
+    "project_id": "tgwfinancesapp",
+    "storage_bucket": "tgwfinancesapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823688109763:android:1e736da329ac0ee07ccc76",
+        "android_client_info": {
+          "package_name": "com.example.tgw_finance_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823688109763-o2m9jlbvejgekt1p3o5t0gkguvrqhuao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_JptlTltBIzlX-D3utzXrifroaRySTNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823688109763-o2m9jlbvejgekt1p3o5t0gkguvrqhuao.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "823688109763-5usbv0odrv4h17ctm7s8vl7st3f53cij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tgwFinancesApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823688109763:android:0fbb136160b5fd217ccc76",
+        "android_client_info": {
+          "package_name": "com.example.tgw_finances_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823688109763-o2m9jlbvejgekt1p3o5t0gkguvrqhuao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_JptlTltBIzlX-D3utzXrifroaRySTNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823688109763-o2m9jlbvejgekt1p3o5t0gkguvrqhuao.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "823688109763-5usbv0odrv4h17ctm7s8vl7st3f53cij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tgwFinancesApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823688109763:android:01a2ed35a60fae207ccc76",
+        "android_client_info": {
+          "package_name": "com.example.tgw_finances_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823688109763-o2m9jlbvejgekt1p3o5t0gkguvrqhuao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_JptlTltBIzlX-D3utzXrifroaRySTNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823688109763-o2m9jlbvejgekt1p3o5t0gkguvrqhuao.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "823688109763-5usbv0odrv4h17ctm7s8vl7st3f53cij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tgwFinancesApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

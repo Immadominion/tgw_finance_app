@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>823688109763-8cm1o0j1e86hhljfd8kj2io9rb4j01re.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.823688109763-8cm1o0j1e86hhljfd8kj2io9rb4j01re</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCII4zxXPixguFC5a8VxX6a14m0M8nWNyM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>823688109763</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.tgwFinanceApp</string>
+	<key>PROJECT_ID</key>
+	<string>tgwfinancesapp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tgwfinancesapp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:823688109763:ios:38f454d2d28063687ccc76</string>
+	<key>DATABASE_URL</key>
+	<string>https://tgwfinancesapp-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
