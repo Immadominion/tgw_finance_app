@@ -7,6 +7,8 @@ import 'package:tgw_finance_app/tgw_converter/widgets/buttons_grid.dart';
 import 'package:tgw_finance_app/tgw_converter/widgets/currency_pickers.dart';
 import 'package:tgw_finance_app/tgw_converter/widgets/value_counter.dart';
 
+//http://api.currencyapi.com/v3/latest?apikey=MvEkyZzNoQAdIIztHVuXGZyUqqEHwigCchBv70qE
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -15,75 +17,111 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late Map<String, dynamic> currencyData;
+  late RxString selectedFrom;
+  late RxString selectedTo;
+  late RxString ammount;
+  late RxDouble selectedPrice;
+
   @override
   void initState() {
+    selectedFrom = 'USD'.obs;
+    selectedTo = 'NGN'.obs;
+    ammount = '1'.obs;
+    selectedPrice = 0.00.obs;
+    currencyData = {};
     getRatesFromApi();
     super.initState();
   }
 
-  Map currencyData = {};
-  getRatesFromApi() async {
+  Future<void> getRatesFromApi() async {
     selectedPrice.value = 0.00;
-    Response response = await ApiCalls().getRates(selectedFrom.value);
-    currencyData = response.body;
-    selectedPrice.value =
-        double.parse(currencyData['data'][selectedTo]['value'].toString());
+    try {
+      final response =
+          await ApiCalls('MvEkyZzNoQAdIIztHVuXGZyUqqEHwigCchBv70qE')
+              .getRates(selectedFrom.value);
+      if (response.status.hasError) {
+        throw Exception('Error getting rates from API');
+      }
+      setState(() {
+        currencyData = response.body['data'];
+        selectedPrice.value = currencyData[selectedTo.value]['value'];
+      });
+    } catch (e) {
+      SnackBar(
+        content: Text('$e'),
+        action: null,
+        showCloseIcon: true,
+      );
+    }
   }
-
-  RxString selectedFrom = 'EUR'.obs;
-  RxString selectedTo = 'PLN'.obs;
-  RxString ammount = '1'.obs;
-  RxDouble selectedPrice = 0.00.obs;
 
   void changeSelected(bool isFrom, String currency) {
     if (isFrom && selectedFrom.value != currency) {
-      selectedFrom.value = currency;
-      getRatesFromApi();
-    } else if (!isFrom) {
-      selectedTo.value = currency;
-      selectedPrice.value =
-          double.parse(currencyData['data'][selectedTo]['value'].toString());
+      setState(() {
+        selectedFrom.value = currency;
+        getRatesFromApi();
+      });
+    } else if (!isFrom && selectedTo.value != currency) {
+      setState(() {
+        selectedTo.value = currency;
+        selectedPrice.value = currencyData[selectedTo.value]['value'];
+      });
     }
   }
 
   void switchCurrencies() {
-    String selectedFromTemp = selectedFrom.value;
-    selectedFrom.value = selectedTo.value;
-    selectedTo.value = selectedFromTemp;
-    getRatesFromApi();
+    setState(() {
+      final selectedFromTemp = selectedFrom.value;
+      selectedFrom.value = selectedTo.value;
+      selectedTo.value = selectedFromTemp;
+      getRatesFromApi();
+    });
   }
 
   void backspace() {
     if (ammount.value.isNotEmpty) {
-      ammount.value = ammount.value.substring(0, ammount.value.length - 1);
+      setState(() {
+        ammount.value = ammount.value.substring(0, ammount.value.length - 1);
+      });
     }
   }
 
   void changeAmmount(String value) {
-    int index = ammount.value.indexOf(',');
+    final index = ammount.value.indexOf(',');
     if (value == '0' && ammount.value == '0') {
     } else if (ammount.value == '0' && value != ',') {
-      ammount.value = value;
+      setState(() {
+        ammount.value = value;
+      });
     } else if (ammount.value.isEmpty && value == ',') {
-      ammount.value = '0,';
+      setState(() {
+        ammount.value = '0,';
+      });
     } else if (!ammount.value.contains(',') &&
         value == ',' &&
         ammount.value.isNotEmpty) {
-      ammount.value = '${ammount.value}$value';
+      setState(() {
+        ammount.value = '${ammount.value}$value';
+      });
     } else if (value != '' &&
         ammount.value.contains(',') &&
         ammount.value.length - index < 3) {
-      ammount.value = '${ammount.value}$value';
+      setState(() {
+        ammount.value = '${ammount.value}$value';
+      });
     } else if (value != ',' && !ammount.value.contains(',')) {
-      ammount.value = '${ammount.value}$value';
+      setState(() {
+        ammount.value = '${ammount.value}$value';
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    ThemeData themeData = Theme.of(context);
+    final themeData = Theme.of(context);
     return Scaffold(
-      backgroundColor: themeData.backgroundColor,
+      backgroundColor: themeData.colorScheme.background,
       appBar: appbarWidget(themeData),
       body: SafeArea(
         child: Padding(

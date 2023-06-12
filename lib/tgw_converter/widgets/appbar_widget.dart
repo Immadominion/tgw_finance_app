@@ -16,9 +16,9 @@ PreferredSize appbarWidget(ThemeData themeData) {
       titleSpacing: 0,
       title: Image.asset(
         themeData.brightness == Brightness.light
-            ? 'assets/image/tgwconvert.png'
-            : 'assets/image/tgwconvert.png',
-        height: 3.5.h,
+            ? 'assets/images/tgwconvert.png'
+            : 'assets/images/tgwconvert.png',
+        height: 15.5.h,
       ),
       centerTitle: true,
     ),

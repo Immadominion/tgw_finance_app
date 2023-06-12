@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tgw_finance_app/tgw_converter/data/theme_data.dart';
-import 'package:tgw_finance_app/tgw_converter/pages/home_page.dart';
+import 'package:tgw_finance_app/tgw_converter/pages/tgw_main_finance.dart';
 
 // Future<void> main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
