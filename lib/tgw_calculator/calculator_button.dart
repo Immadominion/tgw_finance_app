@@ -24,10 +24,11 @@ class CalculatorButton extends StatelessWidget {
           padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
             const EdgeInsets.all(30),
           ),
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+          backgroundColor: MaterialStateProperty.all<Color>(
+              Color.fromARGB(255, 192, 70, 70)),
           foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
           overlayColor: MaterialStateProperty.all<Color>(
-            const Color.fromARGB(255, 217, 227, 231),
+            Color.fromARGB(255, 203, 220, 226),
           ),
         ),
         child: Text(

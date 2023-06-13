@@ -23,7 +23,7 @@ class _MainCalcPageState extends State<MainCalcPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: const Color.fromARGB(255, 118, 143, 155),
         appBar: AppBar(
           title: Text(widget.title),
           centerTitle: true,

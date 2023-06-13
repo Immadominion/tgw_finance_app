@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tgw_finance_app/auth_functions_tgw/auth.dart';
 
 class LoginSignUp extends StatefulWidget {
@@ -238,7 +239,9 @@ class _LoginSignUpState extends State<LoginSignUp> {
 
   Widget _showCircularLoading() {
     return const Center(
-      child: CircularProgressIndicator(),
+      child: SpinKitWaveSpinner(
+        color: Color.fromARGB(255, 244, 77, 74),
+      ),
     );
   }
 }

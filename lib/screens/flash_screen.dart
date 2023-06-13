@@ -4,60 +4,6 @@ import 'package:tgw_finance_app/root.dart';
 import 'dart:async';
 import 'package:tgw_finance_app/auth_functions_tgw/auth.dart';
 
-// class MyCustomWidget extends StatefulWidget {
-//   const MyCustomWidget({super.key});
-
-//   @override
-//   _MyCustomWidgetState createState() => _MyCustomWidgetState();
-// }
-
-// class _MyCustomWidgetState extends State<MyCustomWidget> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//           children: [
-//             Text(
-//               'Suppose this is an app in your Phone\'s Screen page.',
-//               textAlign: TextAlign.center,
-//               style: TextStyle(
-//                 fontSize: 17,
-//                 fontWeight: FontWeight.bold,
-//               ),
-//             ),
-//             OpenContainer(
-//               closedBuilder: (_, openContainer) {
-//                 return Container(
-//                   height: 80,
-//                   width: 80,
-//                   child: Center(
-//                     child: Text(
-//                       'App Logo',
-//                       style: TextStyle(
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                   ),
-//                 );
-//               },
-//               openColor: Colors.white,
-//               closedElevation: 20,
-//               closedShape: RoundedRectangleBorder(
-//                   borderRadius: BorderRadius.circular(20)),
-//               transitionDuration: const Duration(milliseconds: 700),
-//               openBuilder: (_, closeContainer) {
-//                 return const WhiteSplash();
-//               },
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 class FlashScreen extends StatefulWidget {
   const FlashScreen({super.key});
 
@@ -124,7 +70,7 @@ class _FlashScreenState extends State<FlashScreen> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 71, 36, 36),
       body: Center(
         child: Column(
           children: [
@@ -169,7 +115,7 @@ class _FlashScreenState extends State<FlashScreen> {
                         totalRepeatCount: 1,
                         animatedTexts: [
                           FadeAnimatedText(
-                            'White Board',
+                            'TGW Finance',
                             duration: const Duration(milliseconds: 1700),
                             textStyle: const TextStyle(
                               fontSize: 30,

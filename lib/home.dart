@@ -5,8 +5,8 @@ import 'package:tgw_finance_app/screens/profile_screen.dart';
 import 'package:tgw_finance_app/tgw_calculator/maincalc.dart';
 import 'package:tgw_finance_app/tgw_converter/tgw_convert.dart';
 import 'auth_functions_tgw/auth.dart';
-import 'constants.dart';
 import 'tgw_chat_forum/screens/chat_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -44,138 +44,111 @@ class _HomeState extends State<Home> {
     }
   }
 
-  void navigateToCalculatorScreen(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const MainCalcPage(
-          title: 'TGW Calculator',
-        ),
-      ),
-    );
-  }
-
-  void navigateToForum(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const ChatScreen(),
-      ),
-    );
-  }
-
-  void navigateToCurrencyConverterScreen(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const TGWConvert(),
-      ),
-    );
+  Future<void> logOutNow() {
+    return signOutAcc();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // initialRoute: '/',
-      // routes: <String, WidgetBuilder>{
-      //   '/Calculator': (context) => const MainCalcPage(title: 'TGW Calculator'),
-      //   // '/pg3': (context) => ThirdScreen(),
-      //   // '/abt': (context) => AboutScreen(),
-      // },
       title: 'TGW Finance App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // Set default text direction to LTR
-      // You can also set this to RTL if your app's default text direction is right-to-left
-      // textDirection: TextDirection.ltr,
       home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text(
-            "Profile Page",
-            style: TextStyle(color: Colors.black),
-          ),
-          backgroundColor: const Color.fromARGB(255, 250, 181, 181),
-          iconTheme: const IconThemeData(color: Colors.black),
-        ),
-        drawer: Drawer(
-          child: ListView(
-            children: <Widget>[
-              ListTile(
-                title: const Text("Forum"),
-                onTap: () => navigateToForum(context),
-                trailing: const Icon(Icons.chat_outlined),
-              ),
-              ListTile(
-                title: const Text("Calculator"),
-                onTap: () => navigateToCalculatorScreen(context),
-                trailing: const Icon(Icons.calculate),
-              ),
-              ListTile(
-                title: const Text("Currency Converter"),
-                onTap: () => navigateToCurrencyConverterScreen(context),
-                trailing: const Icon(Icons.currency_exchange_rounded),
-              ),
-              ListTile(
-                title: const Text("Logout"),
-                onTap: signOutAcc,
-                trailing: const Icon(Icons.exit_to_app),
-              ),
-            ],
-          ),
-        ),
         body: Stack(
           children: <Widget>[
-            userProfile(),
+            userProfile(context),
           ],
         ),
       ),
     );
   }
 
-  Widget userProfile() {
+  Widget userProfile(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: tabs[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        iconSize: 30.0,
-        backgroundColor: kNextIconColor,
-        fixedColor: kColor,
-        items: [
-          BottomNavigationBarItem(
-            backgroundColor: kNextIconColor,
-            tooltip: 'Home',
-            icon: Icon(Icons.home_outlined, color: kColor),
-            label: 'Home',
+      bottomNavigationBar: Container(
+        margin: const EdgeInsets.all(20),
+        height: size.width * .155,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(.15),
+              blurRadius: 30,
+              offset: const Offset(0, 10),
+            )
+          ],
+          borderRadius: BorderRadius.circular(50),
+        ),
+        child: ListView.builder(
+          itemCount: 4,
+          scrollDirection: Axis.horizontal,
+          padding: EdgeInsets.symmetric(horizontal: size.width * .024),
+          itemBuilder: (context, index) => InkWell(
+            onTap: () {
+              setState(
+                () {
+                  _currentIndex = index;
+                },
+              );
+            },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 1500),
+                  curve: Curves.fastLinearToSlowEaseIn,
+                  margin: EdgeInsets.only(
+                    bottom: index == _currentIndex ? 0 : size.width * .029,
+                    right: size.width * .042,
+                    left: size.width * .042,
+                  ),
+                  width: size.width * .128,
+                  height: index == _currentIndex ? size.width * 0.02 : 0,
+                  decoration: const BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.vertical(
+                        bottom: Radius.circular(10),
+                      )),
+                ),
+                Icon(
+                  listOfIcons[index],
+                  size: size.width * .076,
+                  color: index == _currentIndex
+                      ? Colors.blueAccent
+                      : Colors.black38,
+                ),
+                SizedBox(
+                  height: size.width * .03,
+                ),
+              ],
+            ),
           ),
-          BottomNavigationBarItem(
-            backgroundColor: kNextIconColor,
-            icon: Icon(Icons.currency_exchange_rounded, color: kColor),
-            label: 'Convert Currency',
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: kNextIconColor,
-            icon: Icon(Icons.calculate, color: kColor),
-            label: 'Calculator',
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: kNextIconColor,
-            icon: Icon(Icons.person_outline, color: kColor),
-            label: 'Profile',
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+        ),
       ),
     );
   }
+
+  List<IconData> listOfIcons = [
+    Icons.home_outlined,
+    Icons.currency_exchange_rounded,
+    Icons.calculate,
+    Icons.person_outline,
+  ];
 }
+
+
+
+
+
 
 
 
@@ -188,3 +161,45 @@ class _HomeState extends State<Home> {
 //         textDirection: TextDirection.ltr,
 //       ),
 //     );
+
+
+
+
+// BottomNavigationBar(
+//         currentIndex: _currentIndex,
+//         iconSize: 30.0,
+//         backgroundColor: kNextIconColor,
+//         fixedColor: kColor,
+//         items: [
+//           BottomNavigationBarItem(
+//             backgroundColor: kNextIconColor,
+//             tooltip: 'Forum',
+//             icon: Icon(Icons.home_outlined, color: kColor),
+//             label: 'Forum',
+//           ),
+//           BottomNavigationBarItem(
+//             backgroundColor: kNextIconColor,
+//             tooltip: 'Currency Converter',
+//             icon: Icon(Icons.currency_exchange_rounded, color: kColor),
+//             label: 'Convert Currency',
+//           ),
+//           BottomNavigationBarItem(
+//             backgroundColor: kNextIconColor,
+//             tooltip: 'Calculator',
+//             icon: Icon(Icons.calculate, color: kColor),
+//             label: 'Calculator',
+//           ),
+//           BottomNavigationBarItem(
+//             backgroundColor: kNextIconColor,
+//             tooltip: 'User',
+//             icon: Icon(Icons.person_outline, color: kColor),
+//             label: 'Profile',
+//           ),
+//         ],
+//         onTap: (index) {
+//           setState(() {
+//             _currentIndex = index;
+//           });
+//         },
+//       ),
+// // 

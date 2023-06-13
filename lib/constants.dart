@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final kTextStyle = GoogleFonts.sourceCodePro(
-  color: Colors.grey[400],
+  color: const Color.fromARGB(255, 133, 125, 125),
   fontSize: 18.0,
 );
 
@@ -12,5 +12,5 @@ final kBoldTextStyle = GoogleFonts.sourceCodePro(
   fontSize: 22.0,
 );
 
-final kColor = Colors.deepOrangeAccent[100];
-final kNextIconColor = Colors.grey[600];
+final kColor = Color.fromARGB(255, 235, 111, 111);
+final kNextIconColor = const Color.fromARGB(255, 238, 234, 234);

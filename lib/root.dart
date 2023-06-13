@@ -48,30 +48,6 @@ class _RootState extends State<Root> {
     });
   }
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   switch (authState) {
-  //     case AuthStat.invalid:
-  //       break;
-  //     case AuthStat.loggedOut:
-  //       return LoginSignUp(
-  //         auth: widget.auth,
-  //         loggedIn: loggedIn,
-  //       );
-  //     case AuthStat.loggedIn:
-  //       if (_id.isNotEmpty) {
-  //         return home(
-  //           id: _id,
-  //           auth: widget.auth,
-  //           onsignOut: loggedOut,
-  //         );
-  //       }
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     Widget result;
@@ -103,7 +79,7 @@ class _RootState extends State<Root> {
             auth: widget.auth,
             loggedIn: loggedIn,
           );
-          break; // or any other placeholder widget
+          break;
         }
         break;
 

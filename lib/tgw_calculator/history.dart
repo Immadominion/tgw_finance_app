@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'calculator.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class History extends StatelessWidget {
   const History({super.key, required this.operations});
@@ -36,7 +37,7 @@ class History extends StatelessWidget {
             padding: const EdgeInsets.all(5),
             child: Text(
               Calculator.parseString(operations[i]),
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
             ),
           ),
         );

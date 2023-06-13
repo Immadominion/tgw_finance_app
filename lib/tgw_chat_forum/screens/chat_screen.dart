@@ -1,5 +1,5 @@
 // ignore_for_file: unnecessary_null_comparison
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
 import 'package:tgw_finance_app/tgw_chat_forum/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,7 +19,6 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final messageTextController = TextEditingController();
   final _auth = FirebaseAuth.instance;
-
   String? messageText;
 
   @override
@@ -45,17 +44,25 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: null,
-        actions: <Widget>[
-          IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: () {
-                _auth.signOut();
-                Navigator.pop(context);
-              }),
-        ],
+        //    actions: <Widget>[],
         title: const Text('TGW Chat Forum'),
         backgroundColor: Colors.blueGrey,
         centerTitle: true,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            ListTile(
+              title: const Text("Logout"),
+              onTap: () {
+                setState(() {
+                  _auth.signOut();
+                });
+              },
+              trailing: const Icon(Icons.exit_to_app),
+            ),
+          ],
+        ),
       ),
       body: SafeArea(
         child: Column(
@@ -110,10 +117,9 @@ class MessagesStream extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const Center(
-            child: CircularProgressIndicator(
-              backgroundColor: Colors.blue,
-            ),
-          );
+              child: SpinKitWaveSpinner(
+            color: Color.fromARGB(255, 244, 77, 74),
+          ));
         }
         final messages = snapshot.data?.docs.reversed;
         List<MessageBubble> messageBubbles = [];
@@ -183,7 +189,9 @@ class MessageBubble extends StatelessWidget {
                     topRight: Radius.circular(30.0),
                   ),
             elevation: 5.0,
-            color: isMe ? Colors.blueGrey : Colors.blueGrey,
+            color: isMe
+                ? const Color.fromARGB(255, 231, 234, 235)
+                : const Color.fromARGB(255, 231, 234, 235),
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),

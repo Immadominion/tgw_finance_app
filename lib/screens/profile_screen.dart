@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart ';
 
 import '../wdgets/widgets_method.dart';
@@ -8,6 +8,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final auth = FirebaseAuth.instance;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: buildAppBar(context, 'Profile'),
@@ -24,7 +25,9 @@ class ProfileScreen extends StatelessWidget {
           const SizedBox(height: 15.0),
           buildMenuItem(Icons.help_outline, 'Help Center', () {}),
           const SizedBox(height: 15.0),
-          buildMenuItem(Icons.logout, 'Logout', () {}),
+          buildMenuItem(Icons.logout, 'Logout', () {
+            auth.signOut();
+          }),
         ],
       ),
     );

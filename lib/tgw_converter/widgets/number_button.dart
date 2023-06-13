@@ -21,7 +21,7 @@ Center numberButton(
               str,
               style: GoogleFonts.lato(
                 color: Colors.white,
-                fontSize: 16.sp,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
