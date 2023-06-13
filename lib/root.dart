@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
-import 'login_signup.dart';
+import 'package:flutter/material.dart'
+    show BuildContext, State, StatefulWidget, Widget;
+
+import 'auth_functions_tgw/auth.dart';
 import 'home.dart';
-import 'auth.dart';
+import 'auth_functions_tgw/login_signup.dart';
 
 class Root extends StatefulWidget {
   const Root({super.key, required this.auth});

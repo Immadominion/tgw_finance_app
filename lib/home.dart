@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-//import 'package:tgw_finance_app/tgw_calculator/calculator.dart';
+
+import 'package:tgw_finance_app/screens/profile_screen.dart';
+
 import 'package:tgw_finance_app/tgw_calculator/maincalc.dart';
 import 'package:tgw_finance_app/tgw_converter/tgw_convert.dart';
-import 'auth.dart';
+import 'auth_functions_tgw/auth.dart';
+import 'constants.dart';
+import 'tgw_chat_forum/screens/chat_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -13,6 +17,7 @@ class Home extends StatefulWidget {
   }) : super(key: key);
 
   final BaseAuth auth;
+
   final VoidCallback onSignOut;
   final String id;
 
@@ -21,6 +26,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _currentIndex = 0;
+
+  final tabs = [
+    const ChatScreen(),
+    const TGWConvert(),
+    const MainCalcPage(title: 'Calculator'),
+    const ProfileScreen(),
+  ];
+
   Future<void> signOutAcc() async {
     try {
       await widget.auth.signOut();
@@ -37,6 +51,15 @@ class _HomeState extends State<Home> {
         builder: (context) => const MainCalcPage(
           title: 'TGW Calculator',
         ),
+      ),
+    );
+  }
+
+  void navigateToForum(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ChatScreen(),
       ),
     );
   }
@@ -71,15 +94,20 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text(
-            "Home Page",
+            "Profile Page",
             style: TextStyle(color: Colors.black),
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: const Color.fromARGB(255, 250, 181, 181),
           iconTheme: const IconThemeData(color: Colors.black),
         ),
         drawer: Drawer(
           child: ListView(
             children: <Widget>[
+              ListTile(
+                title: const Text("Forum"),
+                onTap: () => navigateToForum(context),
+                trailing: const Icon(Icons.chat_outlined),
+              ),
               ListTile(
                 title: const Text("Calculator"),
                 onTap: () => navigateToCalculatorScreen(context),
@@ -88,7 +116,7 @@ class _HomeState extends State<Home> {
               ListTile(
                 title: const Text("Currency Converter"),
                 onTap: () => navigateToCurrencyConverterScreen(context),
-                trailing: const Icon(Icons.calculate),
+                trailing: const Icon(Icons.currency_exchange_rounded),
               ),
               ListTile(
                 title: const Text("Logout"),
@@ -100,21 +128,63 @@ class _HomeState extends State<Home> {
         ),
         body: Stack(
           children: <Widget>[
-            hello(),
+            userProfile(),
           ],
         ),
       ),
     );
   }
 
-  Widget hello() {
-    return Center(
-      child: Text(
-        """Hello 
-        User${widget.id}""",
-        style: const TextStyle(fontSize: 20),
-        textDirection: TextDirection.ltr,
+  Widget userProfile() {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: tabs[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        iconSize: 30.0,
+        backgroundColor: kNextIconColor,
+        fixedColor: kColor,
+        items: [
+          BottomNavigationBarItem(
+            backgroundColor: kNextIconColor,
+            tooltip: 'Home',
+            icon: Icon(Icons.home_outlined, color: kColor),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: kNextIconColor,
+            icon: Icon(Icons.currency_exchange_rounded, color: kColor),
+            label: 'Convert Currency',
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: kNextIconColor,
+            icon: Icon(Icons.calculate, color: kColor),
+            label: 'Calculator',
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: kNextIconColor,
+            icon: Icon(Icons.person_outline, color: kColor),
+            label: 'Profile',
+          ),
+        ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
     );
   }
 }
+
+
+
+
+// Center(
+//       child: Text(
+//         """Hello 
+//         User${widget.id}""",
+//         style: const TextStyle(fontSize: 20),
+//         textDirection: TextDirection.ltr,
+//       ),
+//     );

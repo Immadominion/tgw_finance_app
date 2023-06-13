@@ -26,7 +26,7 @@ class ApiCalls extends GetConnect {
     if (response.status.hasError) {
       throw Exception('Unable to fetch data from API');
     }
-
+    print(response);
     return response;
   }
 }

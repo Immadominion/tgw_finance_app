@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tgw_finance_app/auth.dart';
+import 'package:tgw_finance_app/auth_functions_tgw/auth.dart';
 
 class LoginSignUp extends StatefulWidget {
   const LoginSignUp({Key? key, required this.auth, required this.loggedIn})

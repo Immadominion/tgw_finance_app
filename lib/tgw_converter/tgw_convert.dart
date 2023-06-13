@@ -29,7 +29,7 @@ class _TGWConvertState extends State<TGWConvert> {
         defaultTransition: Transition.rightToLeft,
         transitionDuration: const Duration(milliseconds: 500),
         debugShowCheckedModeBanner: false,
-        title: 'SobGOG Currency Converter',
+        title: 'TGW Currency Converter',
         home: const HomePage(),
         theme: lightModeTheme,
         darkTheme: darkModeTheme,
