@@ -31,8 +31,7 @@ class History extends StatelessWidget {
           },
           leading: Container(
             decoration: BoxDecoration(
-                border: Border.all(
-                    color: const Color.fromARGB(255, 235, 47, 47), width: 2.0),
+                border: Border.all(color: Colors.blueAccent, width: 2.0),
                 borderRadius: BorderRadius.circular(50)),
             padding: const EdgeInsets.all(5),
             child: Text(
