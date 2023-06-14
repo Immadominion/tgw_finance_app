@@ -31,6 +31,8 @@ class _ChatScreenState extends State<ChatScreen> {
         'sender': _auth.currentUser?.email,
       });
       _messageTextController.clear();
+    } else {
+      null;
     }
   }
 
@@ -116,7 +118,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('TGW Chat Forum'),
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.blueAccent,
         centerTitle: true,
       ),
       drawer: Drawer(
@@ -142,7 +144,7 @@ class _ChatScreenState extends State<ChatScreen> {
               decoration: const BoxDecoration(
                 color: Colors.white,
                 border: Border(
-                  top: BorderSide(color: Colors.grey, width: 0.5),
+                  top: BorderSide(color: Colors.blueAccent, width: 0.5),
                 ),
               ),
               child: Row(
@@ -156,11 +158,11 @@ class _ChatScreenState extends State<ChatScreen> {
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius: BorderRadius.circular(20.0),
                             borderSide: const BorderSide(
                               width: 2.0,
                               style: BorderStyle.solid,
-                              color: Color.fromARGB(255, 248, 0, 0),
+                              color: Colors.blueAccent,
                             ),
                           ),
                           hintText: 'Type your message here...',
@@ -172,7 +174,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: _submitMessage,
                     icon: const Icon(
                       Icons.send_rounded,
-                      color: Colors.black,
+                      color: Colors.blueAccent,
                     ),
                   ),
                 ],
