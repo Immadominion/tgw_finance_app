@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:tgw_finance_app/screens/profile_screen.dart';
-
 import 'package:tgw_finance_app/tgw_calculator/maincalc.dart';
 import 'package:tgw_finance_app/tgw_converter/tgw_convert.dart';
+
 import 'auth_functions_tgw/auth.dart';
 import 'tgw_chat_forum/screens/chat_screen.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -104,7 +104,9 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AnimatedContainer(
-                  duration: const Duration(milliseconds: 1500),
+                  duration: const Duration(
+                    milliseconds: 1500,
+                  ),
                   curve: Curves.fastLinearToSlowEaseIn,
                   margin: EdgeInsets.only(
                     bottom: index == _currentIndex ? 0 : size.width * .029,
@@ -144,62 +146,3 @@ class _HomeState extends State<Home> {
     Icons.person_outline,
   ];
 }
-
-
-
-
-
-
-
-
-
-// Center(
-//       child: Text(
-//         """Hello 
-//         User${widget.id}""",
-//         style: const TextStyle(fontSize: 20),
-//         textDirection: TextDirection.ltr,
-//       ),
-//     );
-
-
-
-
-// BottomNavigationBar(
-//         currentIndex: _currentIndex,
-//         iconSize: 30.0,
-//         backgroundColor: kNextIconColor,
-//         fixedColor: kColor,
-//         items: [
-//           BottomNavigationBarItem(
-//             backgroundColor: kNextIconColor,
-//             tooltip: 'Forum',
-//             icon: Icon(Icons.home_outlined, color: kColor),
-//             label: 'Forum',
-//           ),
-//           BottomNavigationBarItem(
-//             backgroundColor: kNextIconColor,
-//             tooltip: 'Currency Converter',
-//             icon: Icon(Icons.currency_exchange_rounded, color: kColor),
-//             label: 'Convert Currency',
-//           ),
-//           BottomNavigationBarItem(
-//             backgroundColor: kNextIconColor,
-//             tooltip: 'Calculator',
-//             icon: Icon(Icons.calculate, color: kColor),
-//             label: 'Calculator',
-//           ),
-//           BottomNavigationBarItem(
-//             backgroundColor: kNextIconColor,
-//             tooltip: 'User',
-//             icon: Icon(Icons.person_outline, color: kColor),
-//             label: 'Profile',
-//           ),
-//         ],
-//         onTap: (index) {
-//           setState(() {
-//             _currentIndex = index;
-//           });
-//         },
-//       ),
-// // 
